@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'Tasks1/styles.css' %}">
+</head>
+<body>
+    <div class="mytasks" id="mytasks">
+        <h2>Here are your Tasks</h2>
+        {% if Tasks %}
+            {% for Task in Tasks %}
+               <ul>
+                   <b><li>{{Task}}</li></b>
+               </ul>
+
+            {% endfor %}
+        {% else %}
+               <p>You have no current tasks <br>click the link below to add a task</p>
+        {% endif %}
+        <a href="{% url 'Tasks1:addTask' %}"> add a task</a>
+        
+    </div>
+
+
+<script src="{% static 'Tasks1/index.js' %}"></script>    
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+}
+.mytasks{
+    background-color: rgba(91, 88, 88, 0.5);
+}
+.mytasks{
+    border-radius: 25px;
+    padding: 20px;
+}
