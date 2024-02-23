@@ -5,3 +5,4 @@ from .models import *
 
 # Register your models here.
 admin.site.register(ToDo)
+admin.site.register(User)

@@ -6,6 +6,9 @@ body {
     align-items: center; 
     height: 100vh; 
 }
+.mother{
+    display: flex;
+}
 .mytasks{
     background-color: rgba(91, 88, 88, 0.5);
 }

@@ -9,22 +9,35 @@
     <link rel="stylesheet" href="{% static 'Tasks1/styles.css' %}">
 </head>
 <body>
-    <div class="mytasks" id="mytasks">
-        <h2>Here are your Tasks</h2>
-        {% if Tasks %}
-            {% for Task in Tasks %}
-               <ul>
-                   <b><li>{{Task}}</li></b> 
-                   <small>{{Created}}</small>
-               </ul>
+    <div class="mother">
+        <div class="Users">
+            <h2>Here is a list of Users</h2>
+            <ul>
+                {% for user in Users %}
+                    <li>{{user}} <small><p>name: {{user.FirstNames}}</p></small></li>
+                {% endfor %}
+            </ul>
+        </div>
 
-            {% endfor %}
-        {% else %}
-               <p>You have no current tasks <br>click the link below to add a task</p>
-        {% endif %}
-        <a href="{% url 'Tasks1:addTask' %}"> add a task</a>
-        
-    </div>
+        <div class="mytasks" id="mytasks">
+            <h2>Here are your Tasks</h2>
+            {% if Tasks %}
+                {% for Task in Tasks %}
+                   <ul>
+                       <b><li>{{Task}}</b>  <small><p>Created by: {{Task.Creator}} on : {{Task.DateCreated}}</p></small></li>
+                       <p>{{User}}</p>
+                       
+
+                   </ul>
+
+                {% endfor %}
+            {% else %}
+                   <p>You have no current tasks <br>click the link below to add a task</p>
+            {% endif %}
+            <a href="{% url 'Tasks1:addTask' %}"> add a task</a>
+               
+        </div>
+</div>
 
 
 <script src="{% static 'Tasks1/index.js' %}"></script>    

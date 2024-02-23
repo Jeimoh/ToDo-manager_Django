@@ -1,27 +1,51 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse 
-from django import forms
-from .models import *
+from .forms import AddForm, AddUser
+from .models import User, ToDo
 
 
-class addForm(forms.Form):
-    Task = forms.CharField(label="New Task")
-
-
-Created = ToDo.DateCreated
 # Create your views here
+Created = ToDo.DateCreated
 def index(request):
-    context = {'Tasks': ToDo.Title}
+    Users = User.objects.all()
+    todos = ToDo.objects.all()
+    context = {'Tasks': todos, 'Users': Users}
+    return render(request, 'Tasks1/index.html', context)
+
+def Task(request, pk):
+    Todo = ToDo.objects.get(id = pk)
+    context = {'Tasks': Todo}
     return render(request, 'Tasks1/index.html', context)
 
 
 def addTask(request):
     if (request.method == 'POST'):
-        form = addForm(request.POST)
+        form = AddForm(request.POST)
         if form.is_valid():
-            Task = form.cleaned_data['Task']
-            ToDo.append(Task)
-    context = {'form': addForm(), 'Created':Created}
+            form.save()
+            return redirect('/Tasks')
+        else:
+            form = AddForm()
+
+    context = {'form': AddForm(), 'Created':Created}
     return render(request, 'Tasks1/addTask.html', context)
+
+
+
+def addUser(request):
+   
+    if (request.method == 'POST'):
+        form = AddUser(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/Tasks1')
+        else:
+            form = AddUser()
+
+    context = {'form': AddUser(), 'Created':Created}
+    return render(request, 'Tasks1/addTask.html', context)
+
+
+    
 
 
