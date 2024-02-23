@@ -15,6 +15,12 @@
             <ul>
                 {% for user in Users %}
                     <li>{{user}} <small><p>name: {{user.FirstNames}}</p></small></li>
+                    {%  for Task in Tasks %}
+                        {%if Task.Creator == user %}
+                            <li>{{Task}}</li>
+                        {% endif %}
+
+                    {% endfor %}
                 {% endfor %}
             </ul>
         </div>
