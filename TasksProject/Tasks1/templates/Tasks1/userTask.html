@@ -1,0 +1,7 @@
+
+<h1>Tasks for {{ user.FirstNames }}</h1>
+<ul>
+    {% for task in tasks %}
+        <li>{{ task.Title }}</li>
+    {% endfor %}
+</ul>
