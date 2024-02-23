@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('Tasks/<str:pk>/',views.Task, name = "ToDo"),
     path('addTask/', views.addTask, name = 'addTask'),
-    path('addUser/', views.addUser, name = 'addUser'),
+    path('login/', views.addUser, name = 'addUser'),
 ]

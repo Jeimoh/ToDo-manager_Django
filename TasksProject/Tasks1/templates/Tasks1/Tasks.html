@@ -15,12 +15,8 @@
         </div>
 
         <div class="mytasks" id="mytasks">
-            <h2>Here is a list of Users and their Tasks</h2>
-            <ul>
-                {% for user in Users %}
-                    <h4>User {{user}}</h4> <small><p>name: {{user.FirstNames}}</p></small></li>
                     {%  for Task in Tasks %}
-                        {%if Task.Creator == user %}
+                        {%if Task.Creator == pk %}
                         <ol>
                             <li>{{Task}}</li>
                         </ol>
@@ -28,7 +24,7 @@
                         {% endif %}
 
                     {% endfor %}
-                {% endfor %}
+               
             </ul>
             <a href="{% url 'Tasks1:addTask' %}"> add a task</a><br>
             <a href="{% url 'Tasks1:addUser' %}"> add User</a>

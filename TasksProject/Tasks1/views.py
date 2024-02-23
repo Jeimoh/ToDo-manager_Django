@@ -13,11 +13,10 @@ def index(request):
     return render(request, 'Tasks1/index.html', context)
 
 def Task(request, pk):
-    Todo = ToDo.objects.get(id = pk)
-    context = {'Tasks': Todo}
-    return render(request, 'Tasks1/index.html', context)
+    user = User.objects.get(id = User.UserId)
+    return render(request, 'Tasks1/Tasks.html')
 
-
+  
 def addTask(request):
     if (request.method == 'POST'):
         form = AddForm(request.POST)
@@ -38,12 +37,12 @@ def addUser(request):
         form = AddUser(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/Tasks1')
+            return redirect('/Tasks')
         else:
             form = AddUser()
 
     context = {'form': AddUser(), 'Created':Created}
-    return render(request, 'Tasks1/addTask.html', context)
+    return render(request, 'Tasks1/addUser.html', context)
 
 
     
