@@ -8,7 +8,7 @@ body {
 }
 .mother{
     display: flex;
-    background-color: aqua;
+    
 }
 .mother div{
     background-color: rgba(91, 88, 88, 0.5);

@@ -13,8 +13,12 @@ def index(request):
     return render(request, 'Tasks1/index.html', context)
 
 def Task(request, pk):
-    user = User.objects.get(id = User.UserId)
-    return render(request, 'Tasks1/Tasks.html')
+    todos = ToDo.objects.all() 
+    one  = 1
+    two = 1
+    Creator = ToDo.Creator
+    context = {'Tasks': todos,'pk': pk, 'Creator':Creator, 'one':one, 'two':two}
+    return render(request, 'Tasks1/Tasks.html',context)
 
   
 def addTask(request):

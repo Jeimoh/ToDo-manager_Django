@@ -15,17 +15,18 @@
         </div>
 
         <div class="mytasks" id="mytasks">
-                    {%  for Task in Tasks %}
-                        {%if Task.Creator == pk %}
-                        <ol>
-                            <li>{{Task}}</li>
-                        </ol>
-                           
+                {% if Tasks %}
+                <ol>
+                    {% for task in Tasks %}
+                    
+                       {% if one == task.Creator%}
+                            <li>{{task.Creator}} {{task}}</li>
                         {% endif %}
-
+                        
+                       
                     {% endfor %}
-               
-            </ul>
+                    </ol>
+                {% endif %}
             <a href="{% url 'Tasks1:addTask' %}"> add a task</a><br>
             <a href="{% url 'Tasks1:addUser' %}"> add User</a>
                
